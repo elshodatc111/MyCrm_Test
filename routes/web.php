@@ -18,6 +18,7 @@ Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 
 Route::get('/cours', [CoursController::class, 'index'])->name('cours');
 Route::get('/cours/show/{id}', [CoursController::class, 'show'])->name('cours_show');
+Route::get('/cours/show/pay/{id}', [CoursController::class, 'coursPay'])->name('cours_show_pay');
 
 Route::get('/book', [BookController::class, 'index'])->name('book');
 

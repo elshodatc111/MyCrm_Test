@@ -13,4 +13,10 @@ class CoursController extends Controller{
         return view('cours.show');
     }
 
+    public function coursPay($id){
+        return view('cours.cours_pay');
+    }
+
+    
+
 }
