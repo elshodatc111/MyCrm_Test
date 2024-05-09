@@ -17,4 +17,7 @@ class HomeController extends Controller{
     public function profel(){
         return view('auth.profel');
     }
+    public function show(){
+        return view('auth.cours_show');
+    }
 }

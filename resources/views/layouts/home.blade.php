@@ -57,14 +57,14 @@
 			<div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav m-auto">
 					<li class="nav-item"><a href="{{ route('index') }}" class="nav-link">Bosh sahifa</a></li>
-					<li class="nav-item"><a href="cours.html" class="nav-link">Online kurslar</a></li>
-					<li class="nav-item"><a href="book.html" class="nav-link">Kitoblar</a></li>
-					<li class="nav-item"><a href="author.html" class="nav-link">O'qituvchilar</a></li>
-					<li class="nav-item"><a href="contact.html" class="nav-link">Bog'lanish</a></li>
+					<li class="nav-item"><a href="{{ route('cours') }}" class="nav-link">Online kurslar</a></li>
+					<li class="nav-item"><a href="{{ route('book') }}" class="nav-link">Kitoblar</a></li>
+					<li class="nav-item"><a href="{{ route('techer') }}" class="nav-link">O'qituvchilar</a></li>
+					<li class="nav-item"><a href="{{ route('contact') }}" class="nav-link">Bog'lanish</a></li>
 					@guest
-						<li class="nav-item"><a href="{{ route('login') }}" class="nav-link"><i class="bi bi-person"></i>Kirish</a></li>
+						<li class="nav-item"><a href="{{ route('login') }}" class="nav-link"><i class="bi bi-person"></i> Kirish</a></li>
 					@else
-						<li class="nav-item"><a href="{{ route('profel') }}" class="nav-link"><i class="bi bi-person-add"></i>kabinet</a></li>
+						<li class="nav-item"><a href="{{ route('profel') }}" class="nav-link"><i class="bi bi-person"></i> kabinet</a></li>
 					@endguest
 				</ul>
 			</div>

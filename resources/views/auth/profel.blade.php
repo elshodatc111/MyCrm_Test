@@ -30,7 +30,7 @@
                                 <span class="position"><b>O'qituvchi:</b> Abbos Tulanov</span>
                                 <p>Koreya ish imtixoni uchun testlar.</p>
                                 <div>
-                                    <a href="cours_show.html" class="btn btn-success text-white">Darsni boshlash</a>
+                                    <a href="{{ route('profel_show',1) }}" class="btn btn-success text-white">Darsni boshlash</a>
                                 </div>
                             </div>
                         </div>
