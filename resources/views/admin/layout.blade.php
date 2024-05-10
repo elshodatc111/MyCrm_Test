@@ -17,16 +17,19 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Kurslar</a>
+                                <a class="nav-link active" aria-current="page" href="{{ route('AdminCours') }}">Kurslar</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Kitoblar</a>
+                                <a class="nav-link active" aria-current="page" href="{{ route('AdminBook') }}">Kitoblar</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">O'qituvchilar</a>
+                                <a class="nav-link active" aria-current="page" href="{{ route('AdminTecher') }}">O'qituvchilar</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Users</a>
+                                <a class="nav-link active" aria-current="page" href="{{ route('AdminUser') }}">Users</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="{{ route('index') }}">Chiqish</a>
                             </li>
                         </ul>
                     </div>

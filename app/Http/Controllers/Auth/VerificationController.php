@@ -7,7 +7,7 @@ use Illuminate\Foundation\Auth\VerifiesEmails;
 
 class VerificationController extends Controller{
     use VerifiesEmails;
-    protected $redirectTo = '/';
+    protected $redirectTo = '/cours';
     public function __construct(){
         $this->middleware('auth');
         $this->middleware('signed')->only('verify');

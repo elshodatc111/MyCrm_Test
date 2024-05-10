@@ -17,79 +17,26 @@
 		<section class="ftco-section">
 			<div class="container">
 				<div class="row">
+					@foreach($Techer as $item)
 					<div class="col-md-6 col-lg-3 ftco-animate">
 						<div class="staff">
 							<div class="img-wrap d-flex align-items-stretch">
-								<div class="img align-self-stretch" style="background-image: url(images/staff-1.jpg);"></div>
+								<div class="img align-self-stretch" style="background-image: url(images/{{ $item['image'] }});"></div>
 							</div>
 							<div class="text pt-3 px-3 pb-4 text-center">
-								<h3>Lloyd Wilson</h3>
+								<h3>{{ $item['name'] }}</h3>
 								<div class="faded">
-									<p>I am an ambitious workaholic, but apart from that, pretty simple person.</p>
+									<p>{{ $item['about'] }}</p>
 									<ul class="ftco-social text-center">
-										<li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-telegram"></span></a></li>
-										<li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a></li>
-										<li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"></span></a></li>
+										<li class="ftco-animate"><a href="{{ $item['telegram'] }}" class="d-flex align-items-center justify-content-center"><span class="fa fa-telegram"></span></a></li>
+										<li class="ftco-animate"><a href="{{ $item['facebook'] }}" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a></li>
+										<li class="ftco-animate"><a href="{{ $item['instagram'] }}" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"></span></a></li>
 									</ul>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="col-md-6 col-lg-3 ftco-animate">
-						<div class="staff">
-							<div class="img-wrap d-flex align-items-stretch">
-								<div class="img align-self-stretch" style="background-image: url(images/staff-1.jpg);"></div>
-							</div>
-							<div class="text pt-3 px-3 pb-4 text-center">
-								<h3>Lloyd Wilson</h3>
-								<div class="faded">
-									<p>I am an ambitious workaholic, but apart from that, pretty simple person.</p>
-									<ul class="ftco-social text-center">
-										<li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-telegram"></span></a></li>
-										<li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a></li>
-										<li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"></span></a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6 col-lg-3 ftco-animate">
-						<div class="staff">
-							<div class="img-wrap d-flex align-items-stretch">
-								<div class="img align-self-stretch" style="background-image: url(images/staff-1.jpg);"></div>
-							</div>
-							<div class="text pt-3 px-3 pb-4 text-center">
-								<h3>Lloyd Wilson</h3>
-								<div class="faded">
-									<p>I am an ambitious workaholic, but apart from that, pretty simple person.</p>
-									<ul class="ftco-social text-center">
-										<li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-telegram"></span></a></li>
-										<li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a></li>
-										<li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"></span></a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6 col-lg-3 ftco-animate">
-						<div class="staff">
-							<div class="img-wrap d-flex align-items-stretch">
-								<div class="img align-self-stretch" style="background-image: url(images/staff-1.jpg);"></div>
-							</div>
-							<div class="text pt-3 px-3 pb-4 text-center">
-								<h3>Lloyd Wilson</h3>
-								<div class="faded">
-									<p>I am an ambitious workaholic, but apart from that, pretty simple person.</p>
-									<ul class="ftco-social text-center">
-										<li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-telegram"></span></a></li>
-										<li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a></li>
-										<li class="ftco-animate"><a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"></span></a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-					
+					@endforeach
 				</div>
 			</div>
 		</section>
