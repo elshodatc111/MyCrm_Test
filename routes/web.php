@@ -23,3 +23,8 @@ Route::get('/cours/show/pay/{id}', [CoursController::class, 'coursPay'])->name('
 Route::get('/book', [BookController::class, 'index'])->name('book');
 
 Route::get('/techer', [TecherController::class, 'index'])->name('techer');
+
+
+Route::get('/admin', [HomeController::class, 'admin'])->name('admin');
+Route::post('/catigory/update', [HomeController::class, 'CatigoryUpdate'])->name('catigory_update');
+Route::post('/setting/update', [HomeController::class, 'SettingUpdate'])->name('setting_update');

@@ -66,6 +66,9 @@
 					@guest
 						<li class="nav-item"><a href="{{ route('login') }}" class="nav-link"><i class="bi bi-person"></i> Kirish</a></li>
 					@else
+						@if(Auth::user()->type=='Admin')
+						<li class="nav-item"><a href="{{ route('admin') }}" class="nav-link"><i class="bi bi-person"></i> Admin</a></li>
+						@endif
 						<li class="nav-item"><a href="{{ route('profel') }}" class="nav-link"><i class="bi bi-person"></i> kabinet</a></li>
 					@endguest
 				</ul>
