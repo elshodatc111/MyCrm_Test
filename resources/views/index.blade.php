@@ -8,7 +8,7 @@
 				<div class="col-md-8 ftco-animate d-flex align-items-end">
 					<div class="text w-100">
 						<h1 class="mb-4 text-danger">ATKO koreys tili markazi</h1>
-						<p class="mb-4 text-white p-3" style="background-color:rgba(0,0,0,0.5)">Yurtimizning eng yetakchi o‘qituvchilari tomonidan tayyorlangan videodarslarni tomosha qilib, siz nafaqat ishonchli o‘qituvchi qidirishdan holi bo‘lasiz, balki noyob metodika orqali darslarni qiziq va oson yo‘llar bilan o‘zlashtirishingiz mumkin.</p>
+						<p class="mb-4 text-white p-3" style="background-color:rgba(0,0,0,0.5)">@include('layouts.banner_text')</p>
 						@guest
 							<p><a href="{{ route('login') }}" class="btn btn-primary py-3 px-4"><i class="bi bi-person"></i>KIRISH</a> 
 							<a href="{{ route('register') }}" class="btn btn-white py-3 px-4"><i class="bi bi-person-add"></i>Ro‘yhatdan o‘tish</a></p>
@@ -29,8 +29,8 @@
 	    						<span class="bi bi-alphabet-uppercase text-secondary"></span>
 	    					</div>
     					</div>
-    					<h2><a href="#">Koreys tili alifbosi!</a></h2>
-    					<p>Koreys alifbosi, Koreys tilida erkin o'qish, Koreys tilida yozish, Sodda so'zlarni eshitib tushunish, Sodda gaplar tuzish, Bo'g'inlarni to'g'ri o'qish va Koreys tilida sanash o'rganiladi.</p>
+    					<h2><a href="#">{{ $Catigory[0]['name'] }}</a></h2>
+    					<p>@include('layouts.text1')</p>
     				</div>
     			</div>
     			<div class="col-md-3 d-flex align-items-stretch ftco-animate">
@@ -40,8 +40,8 @@
 								<span class="bi bi-calendar2-date text-secondary"></span>
 	    					</div>
     					</div>
-    					<h2><a href="#">Koreya ish imtixoni uchun maxsus kurslar!</a></h2>
-  						<p>Ish imtixoniga kerek bo'ladigan maxsus lug'atlar, madaniyat ma'lumotlari, Ish imtixoni ehtimoliy testlar, ularni yechimi va tahlili.</p>
+    					<h2><a href="#">{{ $Catigory[1]['name'] }}</a></h2>
+  						<p>@include('layouts.text2')</p>
     				</div>
     			</div>
     			<div class="col-md-3 d-flex align-items-stretch ftco-animate">
@@ -51,8 +51,8 @@
 								<span class="bi bi-book text-secondary"></span>
 	    					</div>
     					</div>
-    					<h2><a href="#">ATKO Koreys tili o'quv qo'llanmalari.</a></h2>
-  						<p> ATKO koreys tili markazi o`quv qo'llanmalari gramatika qismi video qo'llanma tarzida yozib chiqilgan.</p>
+    					<h2><a href="#">{{ $Catigory[2]['name'] }}</a></h2>
+  						<p>@include('layouts.text3')</p>
     				</div>
     			</div>
     			<div class="col-md-3 d-flex align-items-stretch ftco-animate">
@@ -62,8 +62,8 @@
 								<span class="bi bi-chevron-bar-contract text-secondary"></span>
 	    					</div>
     					</div>
-    					<h2><a href="#">Topik II</a></h2>
-  						<p>O`rta va yuqori daraja gramatikasi va ularga sharhlar O`rta va yuqori daraja so`zlar, antonim, sinonim, omonim so`zlar O`rta va yuqori daraja testlari va u testlar tahlili o`rin olgan.</p>
+    					<h2><a href="#">{{ $Catigory[0]['name'] }}</a></h2>
+  						<p>@include('layouts.text4')</p>
     				</div>
     			</div>
     		</div>
@@ -76,7 +76,7 @@
 				<div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
 					<div class="block-18 py-4 mb-4">
 						<div class="text align-items-center">
-							<strong class="number" data-number="19">0</strong>
+							<strong class="number" data-number="{{ $Statistika['kurslar']+2 }}">0</strong>
 							<span>Online kurslar</span>
 						</div>
 					</div>
@@ -84,7 +84,7 @@
 				<div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
 					<div class="block-18 py-4 mb-4">
 						<div class="text align-items-center">
-							<strong class="number" data-number="45">0</strong>
+							<strong class="number" data-number="{{ $Statistika['kitoblar']+8 }}">0</strong>
 							<span>Kitoblar</span>
 						</div>
 					</div>
@@ -92,7 +92,7 @@
 				<div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
 					<div class="block-18 py-4 mb-4">
 						<div class="text align-items-center">
-							<strong class="number" data-number="15">0</strong>
+							<strong class="number" data-number="{{ $Statistika['techers']+3 }}">0</strong>
 							<span>O'qituvchilar</span>
 						</div>
 					</div>
@@ -100,7 +100,7 @@
 				<div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
 					<div class="block-18 py-4 mb-4">
 						<div class="text align-items-center">
-							<strong class="number" data-number="120">0</strong>
+							<strong class="number" data-number="{{ $Statistika['student']+25 }}">0</strong>
 							<span>O'quvchilar</span>
 						</div>
 					</div>

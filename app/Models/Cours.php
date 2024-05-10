@@ -10,6 +10,7 @@ class Cours extends Model{
     protected $fillable = [
         'crm_user_id',
         'techer_id',
+        'category_id',
         'cours_name',
         'price1',
         'price2',

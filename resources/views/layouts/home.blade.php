@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 	<head>
 		<title>ATKO.UZ</title>
@@ -30,9 +31,9 @@
 						<div style=" text-align:right">
 							<p class="mb-0 pt-2 text-danger">
 								<span class="fa fa-phone text-primary"><i class="sr-only">Telegram</i></span>
-								91 950 1101
+								@include('layouts.phone')
 								<span class="fa fa-envelope text-primary"><i class="sr-only">Telegram</i></span>
-								atkoteams@gmail.com
+								@include('layouts.email')
 							</p>
 						</div>
 					</div>
@@ -41,9 +42,9 @@
 			<div class="col-md-4 d-flex ">
 				<div class="social-media">
 					<p class="mb-0 d-flex">
-						<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-telegram text-primary"><i class="sr-only">Telegram</i></span></a>
-						<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook text-primary"><i class="sr-only">Facebook</i></span></a>
-						<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram text-primary"><i class="sr-only">Instagram</i></span></a>
+						<a href="@include('layouts.telegram')" class="d-flex align-items-center justify-content-center"><span class="fa fa-telegram text-primary"><i class="sr-only">Telegram</i></span></a>
+						<a href="@include('layouts.facebook')" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook text-primary"><i class="sr-only">Facebook</i></span></a>
+						<a href="@include('layouts.instagram')" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram text-primary"><i class="sr-only">Instagram</i></span></a>
 					</p>
 				</div>
 			</div>
@@ -86,9 +87,9 @@
     
   
 
-  <!-- loader -->
+  <!-- loader 
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
-
+-->
 
   <script src="{{ env('HTTP_URL')}}/js/jquery.min.js"></script>
   <script src="{{ env('HTTP_URL')}}/js/jquery-migrate-3.0.1.min.js"></script>

@@ -18,7 +18,7 @@
                             </span>
                         @enderror
                         <label for="phone" class="col-form-label text-md-end">Telefon raqam (9X XXX 1234)</label>
-                        <input id="phone" type="number" max=12 min=9 class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="phone" autofocus>
+                        <input id="phone" type="number" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="phone" autofocus>
                         @error('phone')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
