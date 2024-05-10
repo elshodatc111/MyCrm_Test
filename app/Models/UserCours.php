@@ -5,14 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Techer extends Model{
+class UserCours extends Model{
     use HasFactory;
     protected $fillable = [
-        'name',
-        'about',
-        'image',
-        'telegram',
-        'instagram',
-        'facebook'
+        'cours_id',
+        'user_id',
+        'end_data',
     ];
 }

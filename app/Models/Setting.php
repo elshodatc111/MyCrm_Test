@@ -5,14 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Techer extends Model{
+class Setting extends Model{
     use HasFactory;
     protected $fillable = [
-        'name',
-        'about',
-        'image',
+        'phone',
+        'email',
+        'addres',
+        'sayt',
         'telegram',
         'instagram',
-        'facebook'
+        'facebook',
+        'banner_text',
+        'text1',
+        'text2',
+        'text3',
+        'text4',
     ];
 }

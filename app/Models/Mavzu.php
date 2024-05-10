@@ -5,14 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Techer extends Model{
+class Mavzu extends Model{
     use HasFactory;
     protected $fillable = [
-        'name',
-        'about',
-        'image',
-        'telegram',
-        'instagram',
-        'facebook'
+        'cours_id',
+        'number',
+        'mavzu_name',
+        'text',
+        'video',
     ];
 }
