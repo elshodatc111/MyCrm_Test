@@ -15,6 +15,7 @@ Route::get('/home', [HomeController::class, 'home'])->name('home');
 Route::get('/profel', [HomeController::class, 'profel'])->name('profel');
 Route::get('/profel/show/{id}', [HomeController::class, 'show'])->name('profel_show');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+Route::post('/contact', [ContactController::class, 'contactPost'])->name('contactPost');
 
 Route::get('/cours', [CoursController::class, 'index'])->name('cours');
 Route::get('/cours/show/{id}', [CoursController::class, 'show'])->name('cours_show');
@@ -34,5 +35,7 @@ Route::get('/admin/techer', [HomeController::class, 'AdminTecher'])->name('Admin
 Route::get('/admin/techer/delete/{id}', [HomeController::class, 'AdminTecherDelete'])->name('AdminTecherDelete');
 Route::post('/admin/techer/create', [HomeController::class, 'AdminTecherCreate'])->name('AdminTecherCreate');
 Route::get('/admin/user', [HomeController::class, 'AdminUser'])->name('AdminUser');
+Route::get('/admin/contact', [HomeController::class, 'AdminContact'])->name('AdminContact');
+Route::get('/admin/contact/del/{id}', [HomeController::class, 'AdminContactDel'])->name('AdminContactDel');
 Route::post('/catigory/update', [HomeController::class, 'CatigoryUpdate'])->name('catigory_update');
 Route::post('/setting/update', [HomeController::class, 'SettingUpdate'])->name('setting_update');

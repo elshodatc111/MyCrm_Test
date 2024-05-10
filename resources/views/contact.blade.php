@@ -26,7 +26,7 @@
 										<span class="fa fa-map-marker"></span>
 									</div>
 									<div class="text">
-										<p><span>Manzil:</span> Qarshi shahar, Mustaqillik shox ko'chasi 2-uy</p>
+										<p><span>Manzil:</span>{{ $Setting->addres }}</p>
 									</div>
 								</div>
 							</div>
@@ -36,7 +36,7 @@
 										<span class="fa fa-phone"></span>
 									</div>
 									<div class="text">
-										<p><span>Telefon:</span> <a href="tel://1234567920">+998 91 950 1101</a></p>
+										<p><span>Telefon:</span> <a href="#">{{ $Setting->phone }}</a></p>
 									</div>
 								</div>
 							</div>
@@ -46,7 +46,7 @@
 										<span class="fa fa-paper-plane"></span>
 									</div>
 									<div class="text">
-										<p><span>Email:</span> <a href="mailto:info@yoursite.com">atkoteams@gmail.com</a></p>
+										<p><span>Email:</span> <a href="#">{{ $Setting->email }}</a></p>
 									</div>
 								</div>
 							</div>
@@ -56,7 +56,7 @@
 										<span class="fa fa-globe"></span>
 									</div>
 									<div class="text">
-										<p><span>Web sayt</span> <a href="#">atko.uz</a></p>
+										<p><span>Web sayt</span> <a href="#">{{ $Setting->sayt }}</a></p>
 									</div>
 								</div>
 							</div>
@@ -64,8 +64,10 @@
 						<div class="no-gutters">
 							<div class="contact-wrap w-100 p-md-5 p-4">
 								<h3 class="mb-4 w-100 text-center">Bog'lanish</h3>
-								<form method="POST" id="contactForm" name="contactForm" class="contactForm">
+								<form method="POST" action="{{ route('contactPost') }}" id="contactForm" name="contactForm" class="contactForm">
+									@csrf
 									<div class="row">
+										@guest
 										<div class="col-md-6">
 											<div class="form-group">
 												<label class="label" for="name">Ismingiz</label>
@@ -75,13 +77,27 @@
 										<div class="col-md-6"> 
 											<div class="form-group">
 												<label class="label" for="email">Telefon raqamingiz</label>
-												<input type="email" class="form-control" name="email" id="email" placeholder="Email">
+												<input type="number" class="form-control" name="phone" id="phone" placeholder="Email">
 											</div>
 										</div>
+										@else
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="label" for="name">Ismingiz</label>
+												<input type="text" class="form-control" value="{{ Auth::user()->name }}" name="name" id="name" placeholder="Name">
+											</div>
+										</div>
+										<div class="col-md-6"> 
+											<div class="form-group">
+												<label class="label" for="email">Telefon raqamingiz</label>
+												<input type="number" class="form-control" value="{{ Auth::user()->phone }}" name="phone" id="phone" placeholder="Email">
+											</div>
+										</div>
+										@endguest
 										<div class="col-md-12">
 											<div class="form-group">
 												<label class="label" for="#">Murojat matni</label>
-												<textarea name="message" class="form-control" id="message" cols="30" rows="4" placeholder="Message"></textarea>
+												<textarea name="text" class="form-control" id="text" cols="30" rows="4" placeholder="Xabar"></textarea>
 											</div>
 										</div>
 										<div class="col-md-12">

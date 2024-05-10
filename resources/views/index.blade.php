@@ -1,14 +1,16 @@
 @extends('layouts.home')
 
 @section('content')
-    <section class="hero-wrap" style="background-image: url('./images/bg_4.jpg');" data-stellar-background-ratio="0.5">
-		<div class="overlay"></div>
-		<div class="container">
-			<div class="row no-gutters slider-text align-items-center">
-				<div class="col-md-8 ftco-animate d-flex align-items-end">
-					<div class="text w-100">
-						<h1 class="mb-4 text-danger">ATKO koreys tili markazi</h1>
-						<p class="mb-4 text-white p-3" style="background-color:rgba(0,0,0,0.5)">@include('layouts.banner_text')</p>
+    <section id="hero-wrap" class="d-flex align-items-center pt-0 mt-0" data-stellar-background-ratio="0.5">
+        <video autoplay muted loop id="myVideo" class="w-100">
+            <source src="https://www.w3schools.com/howto/rain.mp4" type="video/mp4">
+        </video>
+        <div class="container position-absolute pt-0 mt-0" data-aos="fade-up" data-aos-delay="500">
+			<div class="row no-gutters slider-text align-items-center pt-0 mt-0">
+				<div class="col-md-8 ftco-animate d-flex align-items-end pt-0 mb-0">
+					<div class="text w-100 pt-0 mt-0">
+						<h1 class="mb-1 mt-0 text-danger">ATKO koreys tili markazi</h1>
+						<p class="mb-1 mt-0 text-white p-3" style="background-color:rgba(0,0,0,0.5)">@include('layouts.banner_text')</p>
 						@guest
 							<p><a href="{{ route('login') }}" class="btn btn-primary py-3 px-4"><i class="bi bi-person"></i>KIRISH</a> 
 							<a href="{{ route('register') }}" class="btn btn-white py-3 px-4"><i class="bi bi-person-add"></i>Ro‘yhatdan o‘tish</a></p>
@@ -16,8 +18,12 @@
 					</div>
 				</div>
 			</div>
-		</div>
-	</section>
+        </div>
+    </section>
+
+
+	
+
 
     <section class="ftco-section ftco-no-pt mt-5 mt-md-0">
     	<div class="container">
@@ -69,7 +75,9 @@
     		</div>
     	</div>
     </section>
-
+	<div class="containr">
+	
+	</div>
 	<section class="ftco-counter ftco-section ftco-no-pt ftco-no-pb img bg-light" id="section-counter">
     	<div class="container">
     		<div class="row">

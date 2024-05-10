@@ -5,6 +5,7 @@ use App\Models\Catigory;
 use App\Models\Setting;
 use App\Models\User;
 use App\Models\Book;
+use App\Models\Contact;
 use App\Models\Techer;
 use Illuminate\Http\Request;
 
@@ -105,4 +106,13 @@ class HomeController extends Controller{
         return view('admin.users',compact('User'));
     }
     ### USER END ###
+    ### Contact  ###
+    public function AdminContact(){
+        $Contact = Contact::get();
+        return view('admin.contact',compact('Contact'));
+    }
+    public function AdminContactDel($id){
+        $Contact = Contact::find($id)->delete();
+        return redirect()->route('AdminContact');
+    }
 }

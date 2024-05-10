@@ -29,6 +29,9 @@
                                 <a class="nav-link active" aria-current="page" href="{{ route('AdminUser') }}">Users</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="{{ route('AdminContact') }}">Contact</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="{{ route('index') }}">Chiqish</a>
                             </li>
                         </ul>
