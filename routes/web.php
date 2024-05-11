@@ -27,15 +27,26 @@ Route::get('/techer', [TecherController::class, 'index'])->name('techer');
 
 
 Route::get('/admin', [HomeController::class, 'admin'])->name('admin');
+
 Route::get('/admin/cours', [HomeController::class, 'AdminCours'])->name('AdminCours');
+Route::get('/admin/cours/update/{id}', [HomeController::class, 'AdminCoursUpdate'])->name('AdminCoursUpdate');
+Route::post('/admin/cours/create', [HomeController::class, 'AdminCoursCreate'])->name('AdminCoursCreate');
+Route::put('/admin/cours/update/{id}', [HomeController::class, 'AdminCoursUpdates'])->name('AdminCoursUpdates');
+Route::get('/admin/cours/delete/{id}', [HomeController::class, 'AdminCoursDelete'])->name('AdminCoursDelete');
+
 Route::get('/admin/book', [HomeController::class, 'AdminBook'])->name('AdminBook');
 Route::post('/admin/book/create', [HomeController::class, 'AdminBookCreate'])->name('AdminBookCreate');
 Route::get('/admin/book/delete/{id}', [HomeController::class, 'AdminBookDelete'])->name('AdminBookDelete');
+
 Route::get('/admin/techer', [HomeController::class, 'AdminTecher'])->name('AdminTecher');
 Route::get('/admin/techer/delete/{id}', [HomeController::class, 'AdminTecherDelete'])->name('AdminTecherDelete');
 Route::post('/admin/techer/create', [HomeController::class, 'AdminTecherCreate'])->name('AdminTecherCreate');
+
 Route::get('/admin/user', [HomeController::class, 'AdminUser'])->name('AdminUser');
+
 Route::get('/admin/contact', [HomeController::class, 'AdminContact'])->name('AdminContact');
 Route::get('/admin/contact/del/{id}', [HomeController::class, 'AdminContactDel'])->name('AdminContactDel');
+
 Route::post('/catigory/update', [HomeController::class, 'CatigoryUpdate'])->name('catigory_update');
+
 Route::post('/setting/update', [HomeController::class, 'SettingUpdate'])->name('setting_update');

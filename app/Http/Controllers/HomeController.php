@@ -5,9 +5,12 @@ use App\Models\Catigory;
 use App\Models\Setting;
 use App\Models\User;
 use App\Models\Book;
+use App\Models\Cours;
 use App\Models\Contact;
 use App\Models\Techer;
+use App\Models\Mavzu;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class HomeController extends Controller{
     public function __construct(){$this->middleware('auth');}
@@ -46,9 +49,79 @@ class HomeController extends Controller{
         $Setting->save();
         return redirect()->back();
     }
+    ### START COURS ###
     public function AdminCours(){
-        return view('admin.cours');
+        $cours = Http::get('https://crm-atko.uz/api/cours')->json();
+        $Techer = Techer::get();
+        $Courses = Cours::get();
+        $Cours = array(); 
+        foreach ($Courses as $key => $value) {
+            $Cours[$key]['id'] = $value->id;
+            $Cours[$key]['cours_name'] = $value->cours_name;
+            $Cours[$key]['price1'] = $value->price1;
+            $Cours[$key]['price2'] = $value->price2;
+            $Cours[$key]['mavzu'] = count(Mavzu::where('cours_id',$value->id)->get());
+        }
+        return view('admin.cours',compact('cours','Techer','Cours'));
     }
+    public function AdminCoursCreate(Request $request){
+        $validated = $request->validate([
+            'crm_user_id' => 'required',
+            'category_id' => 'required',
+            'techer_id' => 'required',
+            'video' => 'required',
+            'cours_name' => 'required',
+            'price1' => 'required',
+            'price2' => 'required',
+            'image' => 'required|image|mimes:png,jpg,jpeg|max:2048',
+            'davomiyligi' => 'required',
+            'azolik' => 'required',
+            'min_text' => 'required',
+            'max_text' => 'required',
+        ]);
+        $imageName = time().'.'.$request->image->extension();
+        $request->image->move(public_path('images'), $imageName);
+        $validated['image'] = $imageName;
+        Cours::create($validated);
+        return redirect()->route('AdminCours');
+    }
+    public function AdminCoursUpdate($id){
+        $cours = Http::get('https://crm-atko.uz/api/cours')->json();
+        $Techer = Techer::get();
+        $Cours = Cours::find($id); 
+        return view('admin.cours_update',compact('cours','Techer','Cours'));
+    }
+    public function AdminCoursUpdates(Request $request, $id){
+        $validated = $request->validate([
+            'crm_user_id' => 'required',
+            'category_id' => 'required',
+            'techer_id' => 'required',
+            'video' => 'required',
+            'cours_name' => 'required',
+            'price1' => 'required',
+            'price2' => 'required',
+            'image' => 'required|image|mimes:png,jpg,jpeg|max:2048',
+            'davomiyligi' => 'required',
+            'azolik' => 'required',
+            'min_text' => 'required',
+            'max_text' => 'required',
+        ]);
+        $imageName = time().'.'.$request->image->extension();
+        $request->image->move(public_path('images'), $imageName);
+        $validated['image'] = $imageName;
+        $Cours = Cours::find($id);
+        $Cours->update($validated);
+        return redirect()->route('AdminCours');
+    }
+    public function AdminCoursDelete($id){
+        $Mavzu = Mavzu::where('cours_id',$id)->get();
+        foreach ($Mavzu as $key => $value) {
+            $Mavzus = Mavzu::find($value->id)->delete();
+        }
+        $Cours = Cours::find($id)->delete();
+        return redirect()->route('AdminCours');
+    }
+    ### END COURS ###
     ### BOOK START ###
     public function AdminBook(){
         $Book = Book::get();
@@ -106,7 +179,7 @@ class HomeController extends Controller{
         return view('admin.users',compact('User'));
     }
     ### USER END ###
-    ### Contact  ###
+    ### START Contact  ###
     public function AdminContact(){
         $Contact = Contact::get();
         return view('admin.contact',compact('Contact'));
@@ -115,4 +188,5 @@ class HomeController extends Controller{
         $Contact = Contact::find($id)->delete();
         return redirect()->route('AdminContact');
     }
+    ### END Contact  ###
 }

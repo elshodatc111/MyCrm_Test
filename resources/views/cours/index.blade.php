@@ -20,38 +20,24 @@
     <section class="ftco-section">
         <div class="container">
             <div class="row mb-5">
+                @foreach($Courses as $item)
                 <div class="col-lg-6">
                     <div class="book-wrap book-wrap-2 d-md-flex">
-                        <div class="img img-2 d-flex justify-content-end" style="background-image: url(images/book-1.jpg);"></div>
+                        <div class="img img-2 d-flex justify-content-end" style="background-image: url(images/{{ $item['image'] }});"></div>
                         <div class="text p-4">
-                            <p class="mb-2"><b><i class="bi bi-coin"></i> Narxi: </b><span class="price">150 000 so'm</span></p>
-                            <h2>Ish imtixoni (읽기-600) testlari</h2>
-                            <span class="position"><b>O'qituvchi:</b> Abbos Tulanov</span>
-                            <p>Koreya ish imtixoni uchun testlar.</p>
+                            <p class="mb-2"><b><i class="bi bi-coin"></i> Narxi: </b><span class="price">{{ $item['price1'] }} so'm</span></p>
+                            <h2>{{ $item['techer'] }}</h2>
+                            <span class="position"><b>O'qituvchi:</b> {{ $item['techer'] }}</span>
+                            <p>{{ $item['min_text'] }}.</p>
                             <div>
-                                <a href="{{ route('cours_show',1) }}" 
+                                <a href="{{ route('cours_show',$item['id'] ) }}" 
                                     class="btn btn-success text-white">
-                                    <i class="bi bi-eye"></i>
-                                    Darsni boshlash</a>
+                                    Batafsil...</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="book-wrap book-wrap-2 d-md-flex">
-                        <div class="img img-2 d-flex justify-content-end" style="background-image: url(images/book-1.jpg);"></div>
-                        <div class="text p-4">
-                            <p class="mb-2"><b>Narxi: </b><span class="price">150 000 so'm</span></p>
-                            <h2>Ish imtixoni (읽기-600) testlari</h2>
-                            <span class="position"><b>O'qituvchi:</b> Abbos Tulanov</span>
-                            <p>Koreya ish imtixoni uchun testlar.</p>
-                            <div>
-                                <a href="" class="btn btn-success">Sotib olish</a>
-                                <a href="" class="btn btn-warning text-white">Darsni boshlash</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>	
     </section>
