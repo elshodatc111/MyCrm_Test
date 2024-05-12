@@ -17,7 +17,7 @@
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" integrity="sha384-4LISF5TTJX/fLmGSxO53rV4miRxdg84mZsxmO8Rx5jGtp/LbrixFETvWa5a6sESd" crossorigin="anonymous">
 		<link rel="stylesheet" href="{{ env('HTTP_URL')}}/css/style.css">
 	</head>
-<body>
+<body id="body">
 
   	<div class="container-fluid px-md-5  pt-4 pt-md-5">
 		<div class="row justify-content-between">
@@ -93,20 +93,34 @@
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 -->
 
-  <script src="{{ env('HTTP_URL')}}/js/jquery.min.js"></script>
-  <script src="{{ env('HTTP_URL')}}/js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="{{ env('HTTP_URL')}}/js/popper.min.js"></script>
-  <script src="{{ env('HTTP_URL')}}/js/bootstrap.min.js"></script>
-  <script src="{{ env('HTTP_URL')}}/js/jquery.easing.1.3.js"></script>
-  <script src="{{ env('HTTP_URL')}}/js/jquery.waypoints.min.js"></script>
-  <script src="{{ env('HTTP_URL')}}/js/jquery.stellar.min.js"></script>
-  <script src="{{ env('HTTP_URL')}}/js/owl.carousel.min.js"></script>
-  <script src="{{ env('HTTP_URL')}}/js/jquery.magnific-popup.min.js"></script>
-  <script src="{{ env('HTTP_URL')}}/js/jquery.animateNumber.min.js"></script>
-  <script src="{{ env('HTTP_URL')}}/js/scrollax.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="{{ env('HTTP_URL')}}/js/google-map.js"></script>
-  <script src="{{ env('HTTP_URL')}}/js/main.js"></script>
-    
+	<script src="{{ env('HTTP_URL')}}/js/jquery.min.js"></script>
+	<script src="{{ env('HTTP_URL')}}/js/jquery-migrate-3.0.1.min.js"></script>
+	<script src="{{ env('HTTP_URL')}}/js/popper.min.js"></script>
+	<script src="{{ env('HTTP_URL')}}/js/bootstrap.min.js"></script>
+	<script src="{{ env('HTTP_URL')}}/js/jquery.easing.1.3.js"></script>
+	<script src="{{ env('HTTP_URL')}}/js/jquery.waypoints.min.js"></script>
+	<script src="{{ env('HTTP_URL')}}/js/jquery.stellar.min.js"></script>
+	<script src="{{ env('HTTP_URL')}}/js/owl.carousel.min.js"></script>
+	<script src="{{ env('HTTP_URL')}}/js/jquery.magnific-popup.min.js"></script>
+	<script src="{{ env('HTTP_URL')}}/js/jquery.animateNumber.min.js"></script>
+	<script src="{{ env('HTTP_URL')}}/js/scrollax.min.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+	<script src="{{ env('HTTP_URL')}}/js/google-map.js"></script>
+	<script src="{{ env('HTTP_URL')}}/js/main.js"></script>
+  	<script>
+        $(function(){
+            $('#myvideo').bind('contextmenu',function(){return false;});
+        });
+        $(function(){
+            $('#body').bind('contextmenu',function(){return false;});
+        });
+        document.addEventListener('contextmenu', event => event.preventDefault());
+        document.onkeydown = function (e) {
+            if(e.keyCode == 123) {return false;}
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 73){return false;}
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 74) {return false;}
+            if(e.ctrlKey && e.keyCode == 85) {return false;}
+        }
+    </script> 
   </body>
 </html>

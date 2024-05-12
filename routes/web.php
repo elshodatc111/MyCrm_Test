@@ -14,6 +14,7 @@ Route::get('/', [OnlineController::class, 'index'])->name('index');
 Route::get('/home', [HomeController::class, 'home'])->name('home');
 Route::get('/profel', [HomeController::class, 'profel'])->name('profel');
 Route::get('/profel/show/{id}', [HomeController::class, 'show'])->name('profel_show');
+Route::get('/profel/show/videos/{mavzu_id}', [HomeController::class, 'showvideo'])->name('profel_show_video');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactController::class, 'contactPost'])->name('contactPost');
 

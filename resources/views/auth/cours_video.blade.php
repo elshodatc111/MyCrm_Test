@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section class="hero-wrap hero-wrap-2" style="background-image: url('../../images/bg_3.jpg');" data-stellar-background-ratio="0.5">
+<section class="hero-wrap hero-wrap-2" style="background-image: url('../../../images/bg_3.jpg');" data-stellar-background-ratio="0.5">
         <div class="overlay"></div>
         <div class="container">
             <div class="row no-gutters slider-text align-items-center justify-content-center">
@@ -20,16 +20,18 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 ftco-animate">
-                    <p class="w-100 text-center"><img src="../../images/{{ $Cours['image'] }}" alt="" class="w-50"></p>
-                    <h2 class="mb-3">{{ $Cours['cours_name'] }}</h2>
-                    <p>{{ $Cours['max_text'] }}</p>
+                    <h2 class="mb-3">{{ $Mavzus['mavzu_name'] }}</h2>
+                    <div class="video" style="width:100%">
+                        <video src="{{ $Mavzus['video'] }}" style="width:100%" id="myvideo" controls muted controlsList="nodownload"></video>
+                    </div>
+                    <p>{{ $Mavzus['text'] }}</p>
                 </div> 
                 <div class="col-lg-4 sidebar pl-lg-5 ftco-animate">
                     <div class="sidebar-box ftco-animate">
                         <div class="categories">
                             <h3>Mavzular</h3>
                             @foreach($Mavzu as $item)
-                            <li><a href="{{ route('profel_show_video',$item['id']) }}">{{ $item['mavzu_name'] }}<span class="fa fa-chevron-right"></span></a></li>
+                            <li class="@if($item['id']==$Mavzus['id']) active @endif"><a href="{{ route('profel_show_video',$item['id']) }}">{{ $item['mavzu_name'] }}<span class="fa fa-chevron-right"></span></a></li>
                             @endforeach
                         </div>
                     </div>

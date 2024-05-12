@@ -14,6 +14,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Auth;
 
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
+
 class HomeController extends Controller{
     public function __construct(){$this->middleware('auth');}
     public function index(){return view('home');}
@@ -30,7 +33,17 @@ class HomeController extends Controller{
         }
         return view('auth.profel',compact('Cours'));
     }
-    public function show(){return view('auth.cours_show');}
+    public function show($id){
+        $Cours = Cours::find($id);
+        $Mavzu = Mavzu::where('cours_id',$id)->orderby('number','asc')->get();
+        return view('auth.cours_show',compact('Cours','Mavzu'));
+    }
+    public function showvideo($mavzu_id){
+        $Mavzus = Mavzu::find($mavzu_id);
+        $Cours = Cours::find($Mavzus->cours_id);
+        $Mavzu = Mavzu::where('cours_id',$Mavzus->cours_id)->orderby('number','asc')->get();
+        return view('auth.cours_video',compact('Cours','Mavzu','Mavzus'));
+    }
     public function admin(){
         $Catigory = Catigory::get();
         $Setting = Setting::get()->first();
