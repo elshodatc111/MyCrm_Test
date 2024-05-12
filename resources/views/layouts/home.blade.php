@@ -57,18 +57,18 @@
 			</button>
 			<div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav m-auto">
-					<li class="nav-item"><a href="{{ route('index') }}" class="nav-link">Bosh sahifa</a></li>
-					<li class="nav-item"><a href="{{ route('cours') }}" class="nav-link">Online kurslar</a></li>
-					<li class="nav-item"><a href="{{ route('book') }}" class="nav-link">Kitoblar</a></li>
-					<li class="nav-item"><a href="{{ route('techer') }}" class="nav-link">O'qituvchilar</a></li>
-					<li class="nav-item"><a href="{{ route('contact') }}" class="nav-link">Bog'lanish</a></li>
+					<li class="nav-item"><a href="{{ route('index') }}" class="nav-link"><i class="bi bi-house"></i> Bosh sahifa</a></li>
+					<li class="nav-item"><a href="{{ route('cours') }}" class="nav-link"><i class="bi bi-bookmarks"></i> Online kurslar</a></li>
+					<li class="nav-item"><a href="{{ route('book') }}" class="nav-link"><i class="bi bi-book"></i> Kitoblar</a></li>
+					<li class="nav-item"><a href="{{ route('techer') }}" class="nav-link"><i class="bi bi-people"></i> O'qituvchilar</a></li>
+					<li class="nav-item"><a href="{{ route('contact') }}" class="nav-link"><i class="bi bi-chat-dots"></i> Bog'lanish</a></li>
 					@guest
-						<li class="nav-item"><a href="{{ route('login') }}" class="nav-link"><i class="bi bi-person"></i> Kirish</a></li>
+						<li class="nav-item"><a href="{{ route('login') }}" class="nav-link">Kirish</a></li>
 					@else
 						@if(Auth::user()->type=='Admin')
-						<li class="nav-item"><a href="{{ route('admin') }}" class="nav-link"><i class="bi bi-person"></i> Admin</a></li>
+						<li class="nav-item"><a href="{{ route('admin') }}" class="nav-link">Admin</a></li>
 						@endif
-						<li class="nav-item"><a href="{{ route('profel') }}" class="nav-link"><i class="bi bi-person"></i> kabinet</a></li>
+						<li class="nav-item"><a href="{{ route('profel') }}" class="nav-link"><i class="bi bi-cart3"></i> Mening kurslarim</a></li>
 					@endguest
 				</ul>
 			</div>
