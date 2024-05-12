@@ -34,6 +34,12 @@ Route::post('/admin/cours/create', [HomeController::class, 'AdminCoursCreate'])-
 Route::put('/admin/cours/update/{id}', [HomeController::class, 'AdminCoursUpdates'])->name('AdminCoursUpdates');
 Route::get('/admin/cours/delete/{id}', [HomeController::class, 'AdminCoursDelete'])->name('AdminCoursDelete');
 
+Route::get('/admin/cours/show/{id}', [HomeController::class, 'adminShowCours'])->name('adminShowCours');
+Route::get('/admin/cours/mavzu/updates/{id}', [HomeController::class, 'adminShowMavzuUpdate'])->name('adminShowMavzuUpdate');
+Route::post('/admin/cours/mavzu/create', [HomeController::class, 'adminMavzuCreate'])->name('adminMavzuCreate');
+Route::put('/admin/cours/mavzu/create/update', [HomeController::class, 'adminMavzuCreateUpdate'])->name('adminMavzuCreateUpdate');
+Route::get('/admin/cours/mavzu/create/delete/{id}', [HomeController::class, 'adminMavzuCreateUpdateDelete'])->name('adminMavzuCreateUpdateDelete');
+
 Route::get('/admin/book', [HomeController::class, 'AdminBook'])->name('AdminBook');
 Route::post('/admin/book/create', [HomeController::class, 'AdminBookCreate'])->name('AdminBookCreate');
 Route::get('/admin/book/delete/{id}', [HomeController::class, 'AdminBookDelete'])->name('AdminBookDelete');

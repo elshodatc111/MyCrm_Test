@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Models\Transaction;
+use App\Models\UserCours;
+use App\Models\User;
+use App\Models\Cours;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 
@@ -35,7 +39,7 @@ class PaymeOneController extends Controller{
                         ];
                         return json_encode($response);
                     }
-                    else if($Order->price != $request->params['amount']){ /// *100
+                    else if($Order->price*100 != $request->params['amount']){ /// *100
                         $response = [
                             'id' => $request->id,
                             'error' => [
@@ -82,7 +86,7 @@ class PaymeOneController extends Controller{
                         ];
                         return json_encode($response);
                     }
-                    else if($order->price != $request->params['amount']){ /// *100
+                    else if($order->price*100 != $request->params['amount']){ /// *100
                         $response = [
                             'id' => $request->id,
                             'error' => [
@@ -232,7 +236,14 @@ class PaymeOneController extends Controller{
                     $order_table = Order::where('id', $order_id)->first();
                     $order_table->status = "To'lov qilindi.";
                     $order_table->update();
-
+                    $cours_id = $order_table->cours_id;
+                    $user_id = $order_table->user_id;
+                    $cours_day = Cours::find($cours_id)->azolik;
+                    $CoursUser = New UserCours;
+                    $CoursUser->cours_id = $cours_id;
+                    $CoursUser->user_id = $user_id;
+                    $CoursUser->end_data = date('Y-m-d',strtotime('+'.$cours_day.' day'));
+                    $CoursUser->save();
                     /// To'lov amalga oshirildi  ///
                     $response = [
                         'result' =>[

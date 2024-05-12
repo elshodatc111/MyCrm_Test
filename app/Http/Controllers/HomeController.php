@@ -9,13 +9,27 @@ use App\Models\Cours;
 use App\Models\Contact;
 use App\Models\Techer;
 use App\Models\Mavzu;
+use App\Models\UserCours;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller{
     public function __construct(){$this->middleware('auth');}
     public function index(){return view('home');}
-    public function profel(){return view('auth.profel');}
+    public function profel(){
+        $CoursUser = UserCours::where('user_id',Auth::user()->id)->where('end_data','>=',date("Y-m-d"))->get();
+        $Cours = array();
+        foreach ($CoursUser as $key => $value) {
+            $Cours[$key]['id'] = $value->cours_id;
+            $Cours[$key]['end_data'] = $value->end_data;
+            $Cours[$key]['cours_name'] = Cours::find($value->cours_id)->cours_name;
+            $Cours[$key]['min_text'] = Cours::find($value->cours_id)->min_text;
+            $Cours[$key]['image'] = Cours::find($value->cours_id)->image;
+            $Cours[$key]['techer'] = Techer::find(Cours::find($value->cours_id)->techer_id)->name;
+        }
+        return view('auth.profel',compact('Cours'));
+    }
     public function show(){return view('auth.cours_show');}
     public function admin(){
         $Catigory = Catigory::get();
@@ -120,6 +134,56 @@ class HomeController extends Controller{
         }
         $Cours = Cours::find($id)->delete();
         return redirect()->route('AdminCours');
+    }
+    public function adminShowCours($id){
+        $Courses = Cours::find($id);
+        $Cours = array();
+        $Cours['id'] = $Courses->id;
+        $Cours['cours_name'] = $Courses->cours_name;
+        $Cours['crm_user_id'] = $Courses->crm_user_id;
+        $Cours['techer'] = Techer::find($Courses->techer_id)->name;
+        $Cours['price1'] = $Courses->price1;
+        $Cours['price2'] = $Courses->price2;
+        $Cours['azolik'] = $Courses->azolik;
+        $Cours['davomiyligi'] = $Courses->davomiyligi;
+        $Cours['video'] = $Courses->video;
+        $Cours['image'] = $Courses->image;
+        $Cours['min_text'] = $Courses->min_text;
+        $Cours['max_text'] = $Courses->max_text;
+        $Mavzu = Mavzu::where('cours_id',$id)->orderby('number','asc')->get();
+        return view('admin.cours_show',compact('Cours','Mavzu'));
+    }
+    public function adminMavzuCreate(Request $request){
+        $validated = $request->validate([
+            'cours_id' => 'required',
+            'mavzu_name' => 'required',
+            'text' => 'required',
+            'video' => 'required',
+            'number' => 'required'
+        ]);
+        $Mavzu = Mavzu::create($validated);
+        return redirect()->back();
+    }
+    public function adminShowMavzuUpdate($id){
+        $Mavzu = Mavzu::find($id);
+        return view('admin.cours_mavzu_update',compact('Mavzu'));
+    }
+    public function adminMavzuCreateUpdate(Request $request){
+        $validated = $request->validate([
+            'cours_id' => 'required',
+            'mavzu_name' => 'required',
+            'text' => 'required',
+            'video' => 'required',
+            'number' => 'required'
+        ]);
+        $Mavzu = Mavzu::find($request->mavzu_id);
+        $Mavzu->update($validated);
+        return redirect()->route('adminShowCours',$request->cours_id);
+    }
+    public function adminMavzuCreateUpdateDelete($id){
+        $Mavzu = Mavzu::find($id);
+        $Mavzu->delete();
+        return redirect()->back();
     }
     ### END COURS ###
     ### BOOK START ###

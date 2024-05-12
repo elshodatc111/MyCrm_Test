@@ -21,37 +21,26 @@
 					<div class="col-lg-12 text-center">
                         <h3>Mening kurslarim</h3>
                     </div>
+                    @forelse($Cours as $item)
 					<div class="col-lg-6">
                         <div class="book-wrap book-wrap-2 d-md-flex">
-                            <div class="img img-2 d-flex justify-content-end" style="background-image: url(images/book-1.jpg);"></div>
+                            <div class="img img-2 d-flex justify-content-end" style="background-image: url(images/{{ $item['image'] }});"></div>
                             <div class="text p-4">
-                                <p class="mb-2"><b>Muddat: </b><span class="price">05-24-2024</span></p>
-                                <h2>Ish imtixoni (읽기-600) testlari</h2>
-                                <span class="position"><b>O'qituvchi:</b> Abbos Tulanov</span>
-                                <p>Koreya ish imtixoni uchun testlar.</p>
+                                <p class="mb-2"><b>Muddat: </b><span class="price">{{ $item['end_data'] }}</span></p>
+                                <h2>{{ $item['cours_name'] }}</h2>
+                                <span class="position"><b>O'qituvchi:</b> {{ $item['techer'] }}</span>
+                                <p>{{ $item['min_text'] }}</p>
                                 <div>
-                                    <a href="{{ route('profel_show',1) }}" class="btn btn-success text-white">Darsni boshlash</a>
+                                    <a href="{{ route('profel_show',$item['id']) }}" class="btn btn-success text-white">Darsni boshlash</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-					<div class="col-lg-6">
-                        <div class="book-wrap book-wrap-2 d-md-flex">
-                            <div class="img img-2 d-flex justify-content-end" style="background-image: url(images/book-1.jpg);"></div>
-                            <div class="text p-4">
-                                <p class="mb-2"><b>Muddat: </b><span class="price">05-24-2024</span></p>
-                                <h2>Ish imtixoni (읽기-600) testlari</h2>
-                                <span class="position"><b>O'qituvchi:</b> Abbos Tulanov</span>
-                                <p>Koreya ish imtixoni uchun testlar.</p>
-                                <div>
-                                    <a href="" class="btn btn-success text-white">Darsni boshlash</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @empty
                     <div class="col-lg-12 text-center">
                         <p>Sizning aktiv kurslaringiz mavjud emas.</p>
                     </div>
+                    @endforelse
 					<div class="col-lg-12 pt-5 text-center">
                         <a href="" class="btn btn-danger text-white" href="{{ route('logout') }}"
                             onclick="event.preventDefault();document.getElementById('logout-form').submit();">

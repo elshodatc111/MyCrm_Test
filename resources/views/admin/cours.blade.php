@@ -89,7 +89,7 @@
                     <tr>
                         <td>{{ $loop->index+1 }}</td>
                         <td style="text-align:left">
-                            <a href="">{{ $item['cours_name'] }}</a>
+                            <a href="{{ route('adminShowCours',$item['id']) }}">{{ $item['cours_name'] }}</a>
                         </td>
                         <td>{{ $item['price1'] }}</td>
                         <td>{{ $item['price2'] }}</td>

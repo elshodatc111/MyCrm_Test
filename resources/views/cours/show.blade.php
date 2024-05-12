@@ -51,7 +51,11 @@
                                 {{ $Cours['price1'] }} so'm
                             </div>
                             <div class="" style="display: flex; justify-content: space-around">
-                                <a class="btn btn-danger" href="{{ route('cours_show_pay',$Cours['id']) }}" >Sotib olish</a>    
+                                @if($status=='0')
+                                <a class="btn btn-danger" href="{{ route('cours_show_pay',$Cours['id']) }}" >Sotib olish</a>  
+                                @else
+                                <a class="btn btn-danger" href="{{ route('cours_show_pay',$Cours['id']) }}" >Darslarni boshlash</a> 
+                                @endif
                             </div>
                         </div>
                     </div>
