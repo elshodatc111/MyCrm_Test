@@ -5,12 +5,6 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ConfirmsPasswords;
 
-<<<<<<< HEAD
-class ConfirmPasswordController extends Controller{
-    use ConfirmsPasswords;
-    protected $redirectTo = '/cours';
-    public function __construct(){
-=======
 class ConfirmPasswordController extends Controller
 {
     /*
@@ -40,7 +34,6 @@ class ConfirmPasswordController extends Controller
      */
     public function __construct()
     {
->>>>>>> 5288082 (Save)
         $this->middleware('auth');
     }
 }

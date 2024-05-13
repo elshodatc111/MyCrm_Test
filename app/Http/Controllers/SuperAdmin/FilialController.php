@@ -22,7 +22,6 @@ use App\Models\Murojat;
 use App\Models\Tulov;
 use App\Models\ChegirmaDay;
 use App\Models\SmsCentar;
-use App\Models\MavjudIshHaqi;
 use App\Events\CreateFilial;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
@@ -96,11 +95,6 @@ class FilialController extends Controller{
         ]);
         ChegirmaDay::create([
             'filial_id' => $Filial->id
-        ]);
-        MavjudIshHaqi::create([
-            'filial_id' => $Filial->id,
-            'naqt' => 0,
-            'plastik' => 0,
         ]);
         return redirect()->back()->with('success', 'Yangi filial yaratildi.'); 
     }

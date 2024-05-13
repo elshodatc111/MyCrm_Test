@@ -5,11 +5,6 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
-<<<<<<< HEAD
-class ResetPasswordController extends Controller{
-    use ResetsPasswords;
-    protected $redirectTo = '/cours';
-=======
 class ResetPasswordController extends Controller
 {
     /*
@@ -31,5 +26,4 @@ class ResetPasswordController extends Controller
      * @var string
      */
     protected $redirectTo = '/home';
->>>>>>> 5288082 (Save)
 }

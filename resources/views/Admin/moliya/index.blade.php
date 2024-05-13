@@ -19,7 +19,7 @@
     <div class="alert alert-danger">{{Session::get('error') }}</div>
 @endif
 <section class="section dashboard row mb-0 pb-0">
-    <div class="col-lg-3">
+    <div class="col-lg-4">
         <div class="card mb-2">
             <div class="card-body text-center">
                 <h5 class="card-title mb-0 pb-2"><i class="bi bi-bag-check"></i> Kassada mavjud</h5>
@@ -36,26 +36,7 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-3">
-        <div class="card mb-2">
-            <div class="card-body text-center">
-                <div class="table-responsive">
-                    <h5 class="card-title m-0 pb-2"><i class="bi bi-bag-check"></i> Mavjud ish haqi</h5>
-                    <ul class="list-group">
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <b class="card-title p-0 m-0" style="font-size:14px;"><i class="bi bi-cash"></i> Naqt:</b>
-                            <span class="badge bg-primary rounded-pill">{{ $IshHaq['naqt'] }}</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <b class="card-title p-0 m-0" style="font-size:14px;"><i class="bi bi-credit-card-2-back"></i> Plastik:</b>
-                            <span class="badge bg-primary rounded-pill">{{ $IshHaq['plastik'] }}</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-3">
+    <div class="col-lg-4">
         <div class="card mb-2">
             <div class="card-body text-center">
                 <h5 class="card-title mb-0 pb-2"><i class="bi bi-capslock"></i> Chiqim kutilmoqda</h5>
@@ -72,7 +53,7 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-3">
+    <div class="col-lg-4">
         <div class="card mb-2">
             <div class="card-body text-center">
                 <div class="table-responsive">

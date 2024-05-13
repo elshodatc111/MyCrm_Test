@@ -257,7 +257,7 @@
                                     <th style="text-align:left;">7-dars</th>
                                     <td style="text-align:right;">{{ $Guruh['Kunlar'][6] }}</td>
                                     <th style="text-align:left;">12-dars</th>
-                                    <td style="text-align:right;">{{ $Guruh['Kunlar'][11] }}</td>
+                                    <td style="text-align:right;">{{ $Guruh['Kunlar'][12] }}</td>
                                 </tr>
                                 <tr>
                                     <th style="text-align:left;">3-dars</th>
@@ -265,7 +265,7 @@
                                     <th style="text-align:left;">8-dars</th>
                                     <td style="text-align:right;">{{ $Guruh['Kunlar'][7] }}</td>
                                     <th style="text-align:left;">13-dars</th>
-                                    <td style="text-align:right;">{{ $Guruh['Kunlar'][12] }}</td>
+                                    <td style="text-align:right;">{{ $Guruh['Kunlar'][11] }}</td>
                                 </tr>
                                 <tr>
                                     <th style="text-align:left;">4-dars</th>

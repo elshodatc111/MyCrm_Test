@@ -6,7 +6,6 @@ use App\Models\User;
 use App\Models\AdminKassa;
 use App\Models\FilialKassa;
 use App\Models\IshHaqi;
-use App\Models\MavjudIshHaqi;
 use App\Events\CreateHodim;
 use App\Events\CreatIshHaqi;
 use App\Events\HodimUpdatePasswor;
@@ -58,9 +57,9 @@ class HodimController extends Controller{
         $Kassa['chegirma'] = number_format(($AdminKassa->chegirma), 0, '.', ' ');
         $Kassa['qaytarildi'] = number_format(($AdminKassa->qaytarildi), 0, '.', ' ');
         $Kassa['tashriflar'] = number_format(($AdminKassa->tashriflar), 0, '.', ' ');
-        $MavjudIshHaqi = MavjudIshHaqi::where('filial_id',request()->cookie('filial_id'))->first();
-        $Kassa['MavjudNaqt'] = number_format($MavjudIshHaqi->naqt, 0, '.', ' ');
-        $Kassa['MavjudPlastik'] = number_format($MavjudIshHaqi->plastik, 0, '.', ' ');
+        $FilialKassa = FilialKassa::where('filial_id',request()->cookie('filial_id'))->first();
+        $Kassa['MavjudNaqt'] = number_format($FilialKassa->tulov_naqt, 0, '.', ' ');
+        $Kassa['MavjudPlastik'] = number_format($FilialKassa->tulov_plastik, 0, '.', ' ');
         $ishHaqi = array();
         $Days2 = date("Y-m-d h:i:s",strtotime('-35 day',time()));
         foreach(IshHaqi::where('user_id',$id)->where('created_at','>=',$Days2)->orderby('id','desc')->get() as $key=> $item){

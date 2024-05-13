@@ -5,12 +5,6 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
-<<<<<<< HEAD
-class LoginController extends Controller{
-    use AuthenticatesUsers;
-    protected $redirectTo = '/cours';
-    public function __construct(){
-=======
 class LoginController extends Controller
 {
     /*
@@ -40,7 +34,6 @@ class LoginController extends Controller
      */
     public function __construct()
     {
->>>>>>> 5288082 (Save)
         $this->middleware('guest')->except('logout');
     }
 }

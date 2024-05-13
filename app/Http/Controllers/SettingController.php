@@ -1,14 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-<<<<<<< HEAD
-
-use Illuminate\Http\Request;
-
-class SettingController extends Controller
-{
-    //
-=======
 use App\Models\Setting;
 use App\Models\SmsCounter;
 use Illuminate\Support\Facades\Auth;
@@ -49,5 +41,4 @@ class SettingController extends Controller{
         return redirect()->back()->with('success', 'SMS qo\'shildi.'); 
         dd($request);
     }
->>>>>>> 5288082 (Save)
 }

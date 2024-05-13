@@ -178,7 +178,7 @@ class AdminGuruhController extends Controller{
             }
         }
         $GuruhView = array();
-        $GuruhView['guruh_name'] = strtoupper($request->guruh_name);
+        $GuruhView['guruh_name'] = $request->guruh_name;
         $GuruhView['guruh_price'] = number_format(($TulovSetting->tulov_summa), 0, '.', ' ');
         $GuruhView['guruh_techer'] = User::find($request->techer_id)->name;
         $GuruhView['techer_price'] = str_replace(","," ",$request->techer_price);
@@ -226,7 +226,6 @@ class AdminGuruhController extends Controller{
             'guruh_vaqt' => ['required'],
         ]);
         $validate['admin_id'] = Auth::user()->id;
-        $validate['guruh_name'] = strtoupper($request->guruh_name);
         $Guruh = Guruh::create($validate);
         $GuruhID = $Guruh->id;
         $Kunlar = array();
@@ -622,7 +621,6 @@ class AdminGuruhController extends Controller{
             'guruh_end' => ['required', 'string', 'max:255'],
             'guruh_vaqt' => ['required', 'string', 'max:255'],
         ]);
-        $validate['guruh_name'] = strtoupper($request->guruh_name);
         $validate['admin_id'] = Auth::User()->id;
         $validate['filial_id'] = request()->cookie('filial_id');
         $Guruh = Guruh::create($validate);

@@ -9,7 +9,6 @@ use App\Models\Guruh;
 use App\Models\GuruhUser;
 use App\Models\GuruhTime;
 use App\Models\Davomat;
-use App\Models\MavjudIshHaqi;
 use App\Events\AdminCreateTecher;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -70,7 +69,7 @@ class AdminTecherController extends Controller{
             foreach ($Student as $talaba) {
                 $BonusTalaba = count(GuruhUser::where('user_id',$talaba->user_id)->where('created_at','>=',$talaba->created_at)->where('status','true')->get());
                 if($BonusTalaba>1){$bonuss = $bonuss + 1;}
-            } 
+            }
             $Guruh[$key]['id'] = $value->id;
             $Guruh[$key]['guruh_name'] = $value->guruh_name;
             $Guruh[$key]['guruh_start'] = $value->guruh_start;
@@ -101,10 +100,8 @@ class AdminTecherController extends Controller{
         $Statistika['new'] = $newGuruh;
         $Statistika['activ'] = $activGuruh;
         $Statistika['end'] = $endGuruh;
-
-        $MavjudIshHaqi = MavjudIshHaqi::where('filial_id',request()->cookie('filial_id'))->first();
-        $Statistika['Naqt'] = number_format($MavjudIshHaqi->naqt, 0, '.', ' ');
-        $Statistika['Plastik'] = number_format($MavjudIshHaqi->plastik, 0, '.', ' ');
+        $Statistika['Naqt'] = number_format((FilialKassa::where('filial_id',request()->cookie('filial_id'))->first()->tulov_naqt), 0, '.', ' ');
+        $Statistika['Plastik'] = number_format((FilialKassa::where('filial_id',request()->cookie('filial_id'))->first()->tulov_plastik), 0, '.', ' ');
         $Tulovlar = IshHaqi::where('user_id',$id)->where('created_at','>=',$Days2)->orderby('id','desc')->get();
         $Tulov = array();
         foreach ($Tulovlar as $key => $value) {
@@ -122,17 +119,11 @@ class AdminTecherController extends Controller{
     public function TecherPayDelet($id){
         $IshHaqi = IshHaqi::find($id);
         $FilialKassa = FilialKassa::where('filial_id',$IshHaqi->filial_id)->first();
-        $MavjudIshHaqi = MavjudIshHaqi::where('filial_id',request()->cookie('filial_id'))->first();
         if($IshHaqi->type=='Naqt'){
-            $MavjudIshHaqi->naqt = $MavjudIshHaqi->naqt+$IshHaqi->summa;
             $FilialKassa->tulov_naqt = $FilialKassa->tulov_naqt+$IshHaqi->summa;
-            $FilialKassa->tulov_naqt_ish_haqi = $FilialKassa->tulov_naqt_ish_haqi-$IshHaqi->summa;
         }else{
-            $MavjudIshHaqi->plastik = $MavjudIshHaqi->plastik+$IshHaqi->summa;
             $FilialKassa->tulov_plastik = $FilialKassa->tulov_plastik+$IshHaqi->summa;
-            $FilialKassa->tulov_plastik_ish_haqi = $FilialKassa->tulov_plastik_ish_haqi-$IshHaqi->summa;
         }
-        $MavjudIshHaqi->save();
         $FilialKassa->save();
         $IshHaqi->delete();
         return redirect()->back()->with('success', 'O\'qituvchiga to\'lov o\'chirildi.'); 
@@ -169,18 +160,16 @@ class AdminTecherController extends Controller{
         $Plastik = str_replace(" ","",$request->Plastik);
         $summa = str_replace(",","",$request->summa);
         $FilialKassa = FilialKassa::where('filial_id',request()->cookie('filial_id'))->first();
-        $MavjudIshHaqi = MavjudIshHaqi::where('filial_id',request()->cookie('filial_id'))->first();
         if($summa==0){return redirect()->back()->with('error', 'To\'lov summasi noto\'g\'ri.');}
         if($request->type=='Naqt'){
             if($summa>$Naqt){return redirect()->back()->with('error', 'Kassada mablag\' yetarli emas.'); }
-            $MavjudIshHaqi->naqt = $MavjudIshHaqi->naqt-$summa;
+            $FilialKassa->tulov_naqt = $FilialKassa->tulov_naqt-$summa;
             $FilialKassa->tulov_naqt_ish_haqi = $FilialKassa->tulov_naqt_ish_haqi+$summa;
         }else{
             if($summa>$Plastik){return redirect()->back()->with('error', 'Kassada mablag\' yetarli emas.'); }  
-            $MavjudIshHaqi->plastik = $MavjudIshHaqi->plastik-$summa;
+            $FilialKassa->tulov_plastik = $FilialKassa->tulov_plastik-$summa;  
             $FilialKassa->tulov_plastik_ish_haqi = $FilialKassa->tulov_plastik_ish_haqi+$summa;
         }
-        $MavjudIshHaqi->save();
         $FilialKassa->save();
         $IshHaqi = IshHaqi::create([
             'filial_id'=>request()->cookie('filial_id'),

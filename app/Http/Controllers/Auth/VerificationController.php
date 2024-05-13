@@ -5,12 +5,6 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\VerifiesEmails;
 
-<<<<<<< HEAD
-class VerificationController extends Controller{
-    use VerifiesEmails;
-    protected $redirectTo = '/cours';
-    public function __construct(){
-=======
 class VerificationController extends Controller
 {
     /*
@@ -40,7 +34,6 @@ class VerificationController extends Controller
      */
     public function __construct()
     {
->>>>>>> 5288082 (Save)
         $this->middleware('auth');
         $this->middleware('signed')->only('verify');
         $this->middleware('throttle:6,1')->only('verify', 'resend');
