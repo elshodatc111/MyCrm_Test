@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+<<<<<<< HEAD
 class Setting extends Model{
     use HasFactory;
     protected $fillable = [
@@ -20,5 +21,15 @@ class Setting extends Model{
         'text2',
         'text3',
         'text4',
+=======
+class Setting extends Model
+{
+    use HasFactory;
+    protected $fillable = [
+        'EndData',
+        'Username',
+        'Status',
+        'Summa'
+>>>>>>> 5288082 (Save)
     ];
 }

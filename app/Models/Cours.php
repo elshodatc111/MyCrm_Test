@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+<<<<<<< HEAD
 class Cours extends Model{
     use HasFactory;
     protected $fillable = [
@@ -20,5 +21,13 @@ class Cours extends Model{
         'image',
         'min_text',
         'max_text'  
+=======
+class Cours extends Model
+{
+    use HasFactory;
+    protected $fillable = [
+        'filial_id',
+        'cours_name'
+>>>>>>> 5288082 (Save)
     ];
 }

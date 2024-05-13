@@ -65,7 +65,11 @@ return [
     |
     */
 
+<<<<<<< HEAD
     'timezone' => env('APP_TIMEZONE', 'UTC'),
+=======
+    'timezone' => env('APP_TIMEZONE', 'Asia/Samarkand'),
+>>>>>>> 5288082 (Save)
 
     /*
     |--------------------------------------------------------------------------

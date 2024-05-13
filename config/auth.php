@@ -2,6 +2,7 @@
 
 return [
 
+<<<<<<< HEAD
     /*
     |--------------------------------------------------------------------------
     | Authentication Defaults
@@ -12,6 +13,8 @@ return [
     | as required, but they're a perfect start for most applications.
     |
     */
+=======
+>>>>>>> 5288082 (Save)
 
     'defaults' => [
         'guard' => env('AUTH_GUARD', 'web'),
@@ -110,6 +113,10 @@ return [
     |
     */
 
+<<<<<<< HEAD
     'password_timeout' => env('AUTH_PASSWORD_TIMEOUT', 10800),
+=======
+    'password_timeout' => env('AUTH_PASSWORD_TIMEOUT', 3600*6),
+>>>>>>> 5288082 (Save)
 
 ];

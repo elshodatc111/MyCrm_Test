@@ -13,12 +13,30 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+<<<<<<< HEAD
             $table->string('name');
             $table->string('phone');
             $table->string('type');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+=======
+            $table->string('filial_id');
+            $table->string('name');
+            $table->string('phone');
+            $table->string('phone2');
+            $table->string('addres');
+            $table->string('tkun');
+            $table->string('type');
+            $table->string('status');
+            $table->string('about');
+            $table->string('smm')->nullable();
+            $table->integer('balans')->nullable();
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->string('admin_id');
+>>>>>>> 5288082 (Save)
             $table->rememberToken();
             $table->timestamps();
         });
@@ -39,7 +57,15 @@ return new class extends Migration
         });
     }
 
+<<<<<<< HEAD
     public function down(): void{
+=======
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+>>>>>>> 5288082 (Save)
         Schema::dropIfExists('users');
         Schema::dropIfExists('password_reset_tokens');
         Schema::dropIfExists('sessions');
